@@ -17,7 +17,7 @@ export default {
 
 <style scoped>
 h1 {
-  color: #16a085;
+  color: #a09916;
 }
 ul {
   list-style-type: none;
