@@ -1,13 +1,15 @@
 <template>
-  <div>
+  <div class="login-page">
     <h1>Login</h1>
-    <form>
-      <label>Email:</label>
-      <input type="email" required />
-
-      <label>Password:</label>
-      <input type="password" required />
-
+    <form @submit.prevent="handleLogin">
+      <div>
+        <label>Email:</label>
+        <input type="email" v-model="email" required />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input type="password" v-model="password" required />
+      </div>
       <button type="submit">Login</button>
     </form>
   </div>
@@ -15,29 +17,40 @@
 
 <script>
 export default {
-  name: 'LoginPage'
-}
+  name: 'Login',
+  data() {
+    return {
+      email: '',
+      password: ''
+    };
+  },
+  methods: {
+    handleLogin() {
+      // You can add real authentication later
+      if (this.email && this.password) {
+        alert('Login successful!');
+        this.$router.push('/');
+      } else {
+        alert('Please fill all fields');
+      }
+    }
+  }
+};
 </script>
 
 <style scoped>
-h1 {
-  color: #27ae60;
-}
-form {
-  display: flex;
-  flex-direction: column;
-}
-label {
-  margin-top: 10px;
+.login-page {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
 }
 input {
-  padding: 8px;
+  width: 100%;
   margin-bottom: 10px;
 }
 button {
-  background-color: #27ae60;
-  color: white;
+  width: 100%;
   padding: 10px;
-  border: none;
 }
 </style>
+

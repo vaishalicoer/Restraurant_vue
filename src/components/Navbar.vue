@@ -1,28 +1,29 @@
 <template>
   <nav>
-    <a href="/">Home</a> |
-    <a href="/menu">Menu</a> |
-    <a href="/login">Login</a> |
-    <a href="/signup">Signup</a> |
-    <a href="/admin">Admin</a> |
-    <a href="/contact">Contact</a>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/menu">Menu</router-link> |
+    <router-link to="/contact">Contact</router-link> |
+    <router-link to="/login">Login</router-link> |
+    <router-link to="/signup">Signup</router-link> |
+    <router-link to="/admin">Admin</router-link>
   </nav>
 </template>
 
 <script>
 export default {
-  name: 'AppNavbar'
+  name: 'Navbar'
 }
 </script>
 
 <style scoped>
 nav {
-  background-color: #f5f5f5;
-  padding: 10px;
+  text-align: center;
+  background-color: #42b983;
+  padding: 15px;
 }
-a {
-  margin-right: 10px;
+router-link {
+  color: white;
   text-decoration: none;
-  color: #333;
+  margin: 0 10px;
 }
 </style>

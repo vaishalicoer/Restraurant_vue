@@ -1,46 +1,79 @@
 <template>
-  <div>
-    <h1>Signup</h1>
-    <form>
-      <label>Full Name:</label>
-      <input type="text" required />
+  <div class="signup-box">
+    <h2>Sign Up</h2>
+    <form @submit.prevent="submitForm">
+      <input type="text" v-model="name" placeholder="Your Name" required />
+      <input type="email" v-model="email" placeholder="Email" required />
+      <input type="password" v-model="password" placeholder="Password" required />
+      <input type="password" v-model="confirmPassword" placeholder="Confirm Password" required />
 
-      <label>Email:</label>
-      <input type="email" required />
+      <p v-if="error" class="error">{{ error }}</p>
+      <p v-if="success" class="success">{{ success }}</p>
 
-      <label>Password:</label>
-      <input type="password" required />
-
-      <button type="submit">Signup</button>
+      <button type="submit">Sign Up</button>
     </form>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'SignupPage'
+<script setup>
+import { ref } from 'vue'
+
+const name = ref('')
+const email = ref('')
+const password = ref('')
+const confirmPassword = ref('')
+const error = ref('')
+const success = ref('')
+
+const submitForm = () => {
+  error.value = ''
+  success.value = ''
+
+  if (password.value !== confirmPassword.value) {
+    error.value = 'Passwords do not match'
+    return
+  }
+
+  // Show simple success message
+  success.value = '🎉 Signed up successfully!'
+  
+  // Clear form
+  name.value = ''
+  email.value = ''
+  password.value = ''
+  confirmPassword.value = ''
 }
 </script>
 
 <style scoped>
-h1 {
-  color: #8e44ad;
-}
-form {
-  display: flex;
-  flex-direction: column;
-}
-label {
-  margin-top: 10px;
+.signup-box {
+  max-width: 350px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  font-family: sans-serif;
 }
 input {
-  padding: 8px;
-  margin-bottom: 10px;
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
 }
 button {
-  background-color: #8e44ad;
-  color: white;
+  width: 100%;
   padding: 10px;
+  background-color: #42b983;
+  color: white;
   border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.error {
+  color: red;
+}
+.success {
+  color: green;
 }
 </style>

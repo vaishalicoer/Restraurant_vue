@@ -9,13 +9,14 @@
   
   <script>
   export default {
-    name: 'ContactPage'
+    name: 'Contact'
   }
   </script>
   
   <style scoped>
-  h1 {
-    color: #2980b9;
+  div {
+    text-align: center;
+    margin-top: 40px;
   }
   </style>
   

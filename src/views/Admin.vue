@@ -1,19 +1,22 @@
 <template>
     <div>
       <h1>Admin Dashboard</h1>
-      <p>Manage users, menu items, and orders from here.</p>
+      <ul>
+        <li v-for="(item, index) in menuItems" :key="index">
+          {{ item }}
+        </li>
+      </ul>
     </div>
   </template>
   
   <script>
   export default {
-    name: 'AdminPage'
+    name: 'Admin',
+    data() {
+      return {
+        menuItems: ['Pizza', 'Burger', 'Pasta']
+      }
+    }
   }
   </script>
-  
-  <style scoped>
-  h1 {
-    color: #c0392b;
-  }
-  </style>
   
