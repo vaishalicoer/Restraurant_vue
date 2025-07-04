@@ -1,25 +1,10 @@
 <template>
-    <div class="home">
-      <h1>Welcome to My Restaurant</h1>
-      <p>Delicious food, fast service! 😋</p>
-      <router-link to="/signup">
-        <button>Sign Up Now</button>
+    <section class="bg-gradient-to-r from-red-100 to-yellow-50 p-10 text-center">
+      <h2 class="text-4xl font-bold mb-4">Welcome to Foodie Hubb 🍜</h2>
+      <p class="text-lg text-gray-600 mb-6">Delicious meals delivered to your doorstep.</p>
+      <router-link to="/menu">
+        <button class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600">Order Now</button>
       </router-link>
-    </div>
+    </section>
   </template>
-  
-  <style scoped>
-  .home {
-    text-align: center;
-    margin-top: 50px;
-  }
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #42b983;
-    color: white;
-    border: none;
-    border-radius: 6px;
-  }
-  </style>
   

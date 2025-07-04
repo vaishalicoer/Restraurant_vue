@@ -1,79 +1,56 @@
 <template>
-  <div class="signup-box">
-    <h2>Sign Up</h2>
-    <form @submit.prevent="submitForm">
-      <input type="text" v-model="name" placeholder="Your Name" required />
-      <input type="email" v-model="email" placeholder="Email" required />
-      <input type="password" v-model="password" placeholder="Password" required />
-      <input type="password" v-model="confirmPassword" placeholder="Confirm Password" required />
-
-      <p v-if="error" class="error">{{ error }}</p>
-      <p v-if="success" class="success">{{ success }}</p>
-
-      <button type="submit">Sign Up</button>
+  <div class="max-w-md mx-auto mt-10 bg-white p-6 rounded-xl shadow-md">
+    <h2 class="text-xl font-bold mb-4 text-center">📝 Sign Up</h2>
+    <form @submit.prevent="signup">
+      <input
+        v-model="name"
+        type="text"
+        placeholder="Full Name"
+        class="w-full mb-3 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+        required
+      />
+      <input
+        v-model="email"
+        type="email"
+        placeholder="Email"
+        class="w-full mb-3 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+        required
+      />
+      <input
+        v-model="password"
+        type="password"
+        placeholder="Password"
+        class="w-full mb-3 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+        required
+      />
+      <button
+        class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition duration-200"
+      >
+        Sign Up
+      </button>
     </form>
+    <p class="text-center text-sm mt-4 text-gray-500">
+      Already have an account?
+      <router-link to="/login" class="text-blue-500 hover:underline">Login here</router-link>
+    </p>
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-
-const name = ref('')
-const email = ref('')
-const password = ref('')
-const confirmPassword = ref('')
-const error = ref('')
-const success = ref('')
-
-const submitForm = () => {
-  error.value = ''
-  success.value = ''
-
-  if (password.value !== confirmPassword.value) {
-    error.value = 'Passwords do not match'
-    return
+<script>
+export default {
+  data() {
+    return {
+      name: '',
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    signup() {
+      // For now just simulate signup
+      alert(`Welcome, ${this.name}! 🎉 You’ve signed up successfully.`)
+      this.$router.push('/login')
+    }
   }
-
-  // Show simple success message
-  success.value = '🎉 Signed up successfully!'
-  
-  // Clear form
-  name.value = ''
-  email.value = ''
-  password.value = ''
-  confirmPassword.value = ''
 }
 </script>
-
-<style scoped>
-.signup-box {
-  max-width: 350px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  font-family: sans-serif;
-}
-input {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-}
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #42b983;
-  color: white;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-}
-.error {
-  color: red;
-}
-.success {
-  color: green;
-}
-</style>
